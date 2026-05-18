@@ -1,67 +1,56 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
-  Link,
   createRootRouteWithContext,
   useRouter,
   HeadContent,
   Scripts,
+  Link,
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
+    <>
+      <Header />
+      <div className="flex min-h-[70vh] items-center justify-center px-4">
+        <div className="max-w-md text-center">
+          <div className="font-serif text-8xl gold-text">404</div>
+          <h2 className="mt-4 font-serif text-2xl text-foreground">This page is unwritten</h2>
+          <p className="mt-3 text-sm text-muted-foreground">
+            The chapter you're searching for doesn't appear to be in our library.
+          </p>
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="mt-8 inline-flex items-center justify-center rounded-md bg-gold px-6 py-2.5 text-sm font-medium text-gold-foreground transition-colors hover:bg-gold/90"
           >
-            Go home
+            Return Home
           </Link>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Try again
-          </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
-        </div>
+        <h1 className="font-serif text-3xl text-foreground">An unexpected page break</h1>
+        <p className="mt-2 text-sm text-muted-foreground">Try refreshing this page.</p>
+        <button
+          onClick={() => { router.invalidate(); reset(); }}
+          className="mt-6 rounded-md bg-primary px-5 py-2 text-sm text-primary-foreground hover:bg-primary/90"
+        >
+          Try again
+        </button>
       </div>
     </div>
   );
@@ -72,21 +61,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Readers Review Circle — Professional Book Reviews That Build Reader Trust" },
+      { name: "description", content: "Readers Review Circle is a literary review society of 2000+ devoted readers offering authors thoughtful, honest book reviews. Submit your book for professional review." },
+      { name: "author", content: "Bertha Reagan" },
+      { property: "og:title", content: "Readers Review Circle" },
+      { property: "og:description", content: "A literary review society of 2000+ readers delivering thoughtful book reviews." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:site_name", content: "Readers Review Circle" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
+    links: [{ rel: "stylesheet", href: appCss }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Readers Review Circle",
+        founder: { "@type": "Person", name: "Bertha Reagan" },
+        email: "berthareagan93@yahoo.com",
+        description: "Literary review society of 2000+ readers offering professional book reviews.",
+      }),
+    }],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -100,7 +95,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="paper antialiased">
         {children}
         <Scripts />
       </body>
@@ -110,10 +105,14 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <Header />
+      <main className="min-h-screen">
+        <Outlet />
+      </main>
+      <Footer />
+      <Toaster />
     </QueryClientProvider>
   );
 }
