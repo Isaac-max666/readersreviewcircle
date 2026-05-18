@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { BookOpen, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -10,9 +11,7 @@ export function Footer() {
         <div className="grid lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] gap-12">
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-full border border-gold/60 flex items-center justify-center text-gold">
-                <BookOpen className="w-5 h-5" strokeWidth={1.5} />
-              </div>
+              <img src={logo} alt="Readers Review Circle" className="w-12 h-12 rounded-full object-contain bg-background/10" />
               <div className="font-serif text-xl">Readers Review Circle</div>
             </div>
             <p className="text-sm text-primary-foreground/70 leading-relaxed max-w-sm">

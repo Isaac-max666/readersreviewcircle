@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Moon, Sun, BookOpen } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
+import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 
 const nav = [
@@ -37,12 +38,10 @@ export function Header() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between h-20">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-full border border-gold/60 flex items-center justify-center text-gold group-hover:bg-gold/10 transition-colors">
-            <BookOpen className="w-5 h-5" strokeWidth={1.5} />
-          </div>
+          <img src={logo} alt="Readers Review Circle" className="w-12 h-12 rounded-full object-contain" />
           <div className="leading-tight">
             <div className="font-serif text-xl tracking-wide text-foreground">Readers Review Circle</div>
-            <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">Est. literary society</div>
+            <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">Honest reviews. Real impact.</div>
           </div>
         </Link>
 

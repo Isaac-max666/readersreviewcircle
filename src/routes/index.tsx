@@ -129,7 +129,7 @@ function HomePage() {
                     <Link to="/blog">{p.title}</Link>
                   </h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.excerpt}</p>
-                  <div className="mt-3 text-xs text-muted-foreground tracking-wide">{p.date} · {p.read}</div>
+                  <div className="mt-3 text-xs text-muted-foreground tracking-wide">{p.date}</div>
                 </article>
               ))}
             </div>
