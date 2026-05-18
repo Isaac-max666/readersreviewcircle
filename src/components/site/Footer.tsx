@@ -18,18 +18,6 @@ export function Footer() {
             <p className="text-sm text-primary-foreground/70 leading-relaxed max-w-sm">
               A literary review society of 2000+ devoted readers offering authors honest, thoughtful and considered reviews since our founding.
             </p>
-            <div className="flex gap-3 mt-6">
-              {[Facebook, Twitter, Instagram].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-9 h-9 rounded-full border border-primary-foreground/20 hover:border-gold hover:text-gold flex items-center justify-center transition-colors"
-                  aria-label="social"
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
-            </div>
           </div>
 
           <div>
