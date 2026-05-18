@@ -45,7 +45,7 @@ function BlogPage() {
             <a href="#">{feature.title}</a>
           </h2>
           <p className="mt-5 text-muted-foreground leading-relaxed text-lg">{feature.excerpt}</p>
-          <div className="mt-6 text-sm text-muted-foreground">{feature.date} · {feature.read} read</div>
+          <div className="mt-6 text-sm text-muted-foreground">{feature.date}</div>
         </div>
       </article>
 
@@ -71,7 +71,7 @@ function BlogPage() {
               <ArrowUpRight className="w-5 h-5 mt-1 shrink-0 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />
             </h3>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.excerpt}</p>
-            <div className="mt-4 text-xs text-muted-foreground tracking-wide">{p.date} · {p.read} read</div>
+            <div className="mt-4 text-xs text-muted-foreground tracking-wide">{p.date}</div>
           </article>
         ))}
       </div>
