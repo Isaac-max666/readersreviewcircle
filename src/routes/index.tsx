@@ -7,6 +7,7 @@ import { SectionEyebrow, SectionTitle, Ornament } from "@/components/site/Sectio
 import { REVIEWS, TESTIMONIALS, BLOG_POSTS } from "@/lib/site-data";
 import heroBooks from "@/assets/hero-books.jpg";
 import openBook from "@/assets/open-book.jpg";
+import founder from "@/assets/founder-bertha.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -110,6 +111,44 @@ function HomePage() {
 
       {/* TESTIMONIAL CAROUSEL */}
       <TestimonialMarquee />
+
+      {/* MEET THE OWNER */}
+      <section className="mx-auto max-w-7xl px-6 lg:px-10 py-28">
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-16 items-center">
+          <div className="relative">
+            <div className="aspect-[4/5] overflow-hidden rounded-sm">
+              <img src={founder} alt="Bertha Reagan, founder of Readers Review Circle" width={900} height={1125} loading="lazy" className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute -bottom-6 -right-6 bg-gold text-gold-foreground px-6 py-4 font-serif italic shadow-lg">
+              <div className="text-[10px] tracking-[0.3em] uppercase mb-1 not-italic">Founder</div>
+              <div className="text-xl">Bertha Reagan</div>
+            </div>
+          </div>
+          <div>
+            <SectionEyebrow>Meet the Owner</SectionEyebrow>
+            <SectionTitle>The Reader Behind the Circle</SectionTitle>
+            <div className="mt-8 space-y-5 text-foreground/80 leading-relaxed">
+              <p>
+                Bertha Reagan founded Readers Review Circle around a simple conviction: every book deserves a reader who pays attention, and every author deserves a review written with care.
+              </p>
+              <p>
+                What began as twelve readers at her kitchen table has grown into a literary society of <span className="text-foreground font-medium">2,000+ devoted readers</span> — yet Bertha still reads every submission personally and answers each author by name.
+              </p>
+              <p className="font-serif italic text-lg text-muted-foreground">
+                "Honest reviews. Real impact. That has always been the promise."
+              </p>
+            </div>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Button asChild variant="gold" size="lg">
+                <Link to="/about">Read Her Story <ArrowRight className="w-4 h-4" /></Link>
+              </Button>
+              <Button asChild variant="goldOutline" size="lg">
+                <Link to="/contact">Contact Bertha</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* RECENT DISCUSSIONS */}
       <section className="mx-auto max-w-7xl px-6 lg:px-10 py-28">
