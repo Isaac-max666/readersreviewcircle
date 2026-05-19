@@ -7,7 +7,6 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 const isVercel = process.env.VERCEL === "1";
-console.log("[vite.config] isVercel =", isVercel, "VERCEL env =", process.env.VERCEL);
 
 export default defineConfig({
   tanstackStart: isVercel
