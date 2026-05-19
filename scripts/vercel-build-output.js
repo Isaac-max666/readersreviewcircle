@@ -27,7 +27,7 @@ const funcDir = path.join(outputDir, "functions/index.func");
 fs.mkdirSync(funcDir, { recursive: true });
 
 // Write server entry that re-exports the built server bundle
-const serverBundlePath = path.join(distDir, "server", "server.js");
+const serverBundlePath = path.join(distDir, "server", "index.js");
 if (fs.existsSync(serverBundlePath)) {
   // Copy the server bundle
   fs.copyFileSync(serverBundlePath, path.join(funcDir, "index.js"));
