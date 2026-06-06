@@ -41,6 +41,20 @@ export function Footer() {
               </li>
               <li>Founded by Bertha Reagan</li>
               <li>Primary platform: Goodreads</li>
+              <li>
+                <a
+                  href="https://www.buymeacoffee.com/readersreviewcircle"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-1"
+                >
+                  <img
+                    src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png"
+                    alt="Buy Me a Coffee"
+                    className="h-[40px] w-auto"
+                  />
+                </a>
+              </li>
             </ul>
           </div>
 
