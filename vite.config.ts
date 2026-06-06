@@ -12,5 +12,4 @@ export default defineConfig({
   tanstackStart: isVercel
     ? { server: { preset: "vercel" } }
     : { server: { entry: "server" } },
-  cloudflare: isVercel ? false : undefined,
 });
