@@ -42,7 +42,7 @@ function HomePage() {
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <img src={heroBooks} alt="" width={1600} height={1200} fetchpriority="high" className="w-full h-full object-cover opacity-25 dark:opacity-30" />
+          <img src={heroBooks} alt="" width={1600} height={1200} fetchPriority="high" className="w-full h-full object-cover opacity-25 dark:opacity-30" />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background/85 to-background" />
         </div>
 
