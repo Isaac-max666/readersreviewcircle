@@ -51,7 +51,7 @@ export function Header() {
               key={n.to}
               to={n.to}
               activeOptions={{ exact: n.to === "/" }}
-              className="text-sm tracking-wide text-foreground/75 hover:text-foreground transition-colors relative"
+              className="text-sm tracking-wide text-foreground/90 hover:text-foreground transition-colors relative"
               activeProps={{ className: "text-foreground font-medium" }}
             >
               {n.label}
@@ -88,7 +88,7 @@ export function Header() {
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="text-base text-foreground/80 hover:text-foreground"
+                className="text-base text-foreground/90 hover:text-foreground"
               >
                 {n.label}
               </Link>

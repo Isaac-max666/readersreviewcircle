@@ -186,7 +186,7 @@ function HomePage() {
             <h2 className="font-serif text-4xl md:text-5xl text-balance">
               Have your book read by people who <span className="italic gold-text">truly read</span>.
             </h2>
-            <p className="mt-6 text-primary-foreground/75 max-w-xl mx-auto">
+            <p className="mt-6 text-primary-foreground/90 max-w-xl mx-auto">
               Send your work to our circle for considered, professional literary review. We respond to every submission personally.
             </p>
             <Button asChild variant="gold" size="xl" className="mt-10">
