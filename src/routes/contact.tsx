@@ -80,7 +80,7 @@ function ContactPage() {
               <div className="text-sm text-muted-foreground mt-1">Where 2,000+ of our readers gather daily.</div>
             </div>
             <div className="p-8 bg-primary text-primary-foreground rounded-sm">
-              <div className="text-xs uppercase tracking-[0.25em] text-gold mb-2">Response Time</div>
+              <div className="text-xs uppercase tracking-[0.25em] text-ink mb-2">Response Time</div>
               <div className="font-serif text-2xl">Within 2–3 weeks</div>
               <p className="text-sm text-primary-foreground/90 mt-2">Bertha responds personally to every message.</p>
             </div>

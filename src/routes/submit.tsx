@@ -35,7 +35,7 @@ function SubmitPage() {
             <div className="flex items-start gap-3">
               <Mail className="w-5 h-5 text-gold mt-0.5" />
               <div>
-                <div className="text-xs uppercase tracking-[0.25em] text-gold mb-1">Questions?</div>
+                <div className="text-xs uppercase tracking-[0.25em] text-ink mb-1">Questions?</div>
                 <a href={`mailto:${RECIPIENT}`} className="font-serif text-lg text-foreground hover:text-gold break-all">
                   {RECIPIENT}
                 </a>

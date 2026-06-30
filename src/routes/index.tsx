@@ -163,7 +163,7 @@ function HomePage() {
             <div className="mt-10 space-y-7">
               {recent.map((p) => (
                 <article key={p.id} className="group border-b border-border pb-7 last:border-0">
-                  <div className="text-[11px] uppercase tracking-[0.25em] text-gold mb-2">{p.category}</div>
+                  <div className="text-[11px] uppercase tracking-[0.25em] text-ink mb-2">{p.category}</div>
                   <h3 className="font-serif text-2xl text-foreground group-hover:text-gold transition-colors">
                     <Link to="/blog">{p.title}</Link>
                   </h3>
@@ -206,7 +206,7 @@ export function ReviewCard({ r }: { r: typeof REVIEWS[number] }) {
         <img src={r.cover} alt={r.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
       </div>
       <div className="p-7">
-        <div className="text-[10px] uppercase tracking-[0.3em] text-gold mb-3">{r.genre}</div>
+        <div className="text-[10px] uppercase tracking-[0.3em] text-ink mb-3">{r.genre}</div>
         <h3 className="font-serif text-2xl text-foreground leading-tight">{r.title}</h3>
         <p className="mt-1 text-sm italic text-muted-foreground">by {r.author}</p>
         <div className="flex items-center gap-0.5 mt-4">

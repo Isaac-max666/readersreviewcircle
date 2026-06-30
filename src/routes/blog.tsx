@@ -40,7 +40,7 @@ function BlogPage() {
           />
         </div>
         <div className="flex flex-col justify-center">
-          <div className="text-[11px] uppercase tracking-[0.3em] text-gold mb-3">Featured · {feature.category}</div>
+          <div className="text-[11px] uppercase tracking-[0.3em] text-ink mb-3">Featured · {feature.category}</div>
           <h2 className="font-serif text-4xl md:text-5xl text-foreground leading-tight text-balance group-hover:text-gold transition-colors">
             <a href="#">{feature.title}</a>
           </h2>
@@ -65,7 +65,7 @@ function BlogPage() {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14">
         {rest.map((p) => (
           <article key={p.id} className="group cursor-pointer">
-            <div className="text-[11px] uppercase tracking-[0.3em] text-gold mb-3">{p.category}</div>
+            <div className="text-[11px] uppercase tracking-[0.3em] text-ink mb-3">{p.category}</div>
             <h3 className="font-serif text-2xl text-foreground leading-snug group-hover:text-gold transition-colors flex items-start gap-2">
               {p.title}
               <ArrowUpRight className="w-5 h-5 mt-1 shrink-0 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />
