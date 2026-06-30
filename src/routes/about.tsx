@@ -44,7 +44,7 @@ function AboutPage() {
             <h1 className="font-serif text-5xl md:text-6xl leading-tight text-foreground text-balance">
               A small circle of readers, grown into a literary society.
             </h1>
-            <div className="mt-8 space-y-5 text-foreground/80 leading-relaxed">
+            <div className="mt-8 space-y-5 text-foreground/90 leading-relaxed">
               <p>
                 Readers Review Circle began at Bertha Reagan's kitchen table in 2018 — twelve readers, one shared shelf, and an unhurried promise to take every book seriously.
               </p>
@@ -86,7 +86,7 @@ function AboutPage() {
         <div className="grid md:grid-cols-2 gap-px bg-border">
           {values.map((v, i) => (
             <div key={v.t} className="bg-background p-10">
-              <div className="text-gold font-serif text-2xl mb-4">0{i + 1}</div>
+              <div className="text-ink font-serif text-2xl mb-4">0{i + 1}</div>
               <h3 className="font-serif text-2xl text-foreground mb-3">{v.t}</h3>
               <p className="text-muted-foreground leading-relaxed">{v.d}</p>
             </div>

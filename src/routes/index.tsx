@@ -127,7 +127,7 @@ function HomePage() {
           <div>
             <SectionEyebrow>Meet the Owner</SectionEyebrow>
             <SectionTitle>The Reader Behind the Circle</SectionTitle>
-            <div className="mt-8 space-y-5 text-foreground/80 leading-relaxed">
+            <div className="mt-8 space-y-5 text-foreground/90 leading-relaxed">
               <p>
                 Bertha Reagan founded Readers Review Circle around a simple conviction: every book deserves a reader who pays attention, and every author deserves a review written with care.
               </p>
@@ -163,7 +163,7 @@ function HomePage() {
             <div className="mt-10 space-y-7">
               {recent.map((p) => (
                 <article key={p.id} className="group border-b border-border pb-7 last:border-0">
-                  <div className="text-[11px] uppercase tracking-[0.25em] text-gold mb-2">{p.category}</div>
+                  <div className="text-[11px] uppercase tracking-[0.25em] text-ink mb-2">{p.category}</div>
                   <h3 className="font-serif text-2xl text-foreground group-hover:text-gold transition-colors">
                     <Link to="/blog">{p.title}</Link>
                   </h3>
@@ -186,7 +186,7 @@ function HomePage() {
             <h2 className="font-serif text-4xl md:text-5xl text-balance">
               Have your book read by people who <span className="italic gold-text">truly read</span>.
             </h2>
-            <p className="mt-6 text-primary-foreground/75 max-w-xl mx-auto">
+            <p className="mt-6 text-primary-foreground/90 max-w-xl mx-auto">
               Send your work to our circle for considered, professional literary review. We respond to every submission personally.
             </p>
             <Button asChild variant="gold" size="xl" className="mt-10">
@@ -206,7 +206,7 @@ export function ReviewCard({ r }: { r: typeof REVIEWS[number] }) {
         <img src={r.cover} alt={r.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
       </div>
       <div className="p-7">
-        <div className="text-[10px] uppercase tracking-[0.3em] text-gold mb-3">{r.genre}</div>
+        <div className="text-[10px] uppercase tracking-[0.3em] text-ink mb-3">{r.genre}</div>
         <h3 className="font-serif text-2xl text-foreground leading-tight">{r.title}</h3>
         <p className="mt-1 text-sm italic text-muted-foreground">by {r.author}</p>
         <div className="flex items-center gap-0.5 mt-4">
@@ -216,7 +216,7 @@ export function ReviewCard({ r }: { r: typeof REVIEWS[number] }) {
         </div>
         <p className="mt-5 text-sm text-muted-foreground leading-relaxed line-clamp-3">{r.summary}</p>
         <div className="mt-6 pt-5 border-t border-border flex items-center justify-between text-xs">
-          <span className="text-foreground/80">Reviewed by {r.reviewer}</span>
+          <span className="text-foreground/90">Reviewed by {r.reviewer}</span>
           <span className="text-muted-foreground">{r.date}</span>
         </div>
       </div>
