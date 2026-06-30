@@ -12,7 +12,7 @@ import founder from "@/assets/founder-bertha.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Readers Review Circle — Professional Book Reviews That Build Reader Trust" },
+      { title: "Readers Review Circle — Professional Book Reviews" },
       { name: "description", content: "Readers Review Circle is a literary review network of 2000+ passionate readers delivering thoughtful, honest book reviews for authors and readers worldwide." },
       { property: "og:title", content: "Readers Review Circle — Professional Book Reviews" },
       { property: "og:description", content: "2000+ devoted readers. Honest reviews. Trusted literary recommendations." },

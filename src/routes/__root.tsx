@@ -61,8 +61,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Readers Review Circle — Professional Book Reviews That Build Reader Trust" },
-      { name: "description", content: "Readers Review Circle is a literary review society of 2000+ devoted readers offering authors thoughtful, honest book reviews. Submit your book for professional review." },
+      { title: "Readers Review Circle — Professional Book Reviews" },
+      { name: "description", content: "A literary review society of 2000+ devoted readers offering honest, thoughtful book reviews for authors and readers worldwide." },
       { name: "author", content: "Bertha Reagan" },
       { property: "og:title", content: "Readers Review Circle — Professional Book Reviews That Build Reader Trust" },
       { property: "og:description", content: "Readers Review Circle is a literary review society of 2000+ devoted readers offering authors thoughtful, honest book reviews. Submit your book for professional review." },
