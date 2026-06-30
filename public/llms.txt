@@ -1,0 +1,14 @@
+# Readers Review Circle
+
+> A literary review society of 2,000+ devoted readers offering honest, thoughtful book reviews for authors and readers worldwide.
+
+Readers Review Circle is a professional book review network founded by Bertha Reagan. Authors submit their books for considered literary feedback, and the Circle publishes reviews across fiction, romance, mystery, fantasy, biography, business, self-help, and non-fiction. The community is primarily active on Goodreads.
+
+## Pages
+
+- [Home](/): Professional book reviews that build reader trust.
+- [About](/about): Bertha Reagan's founder story, mission, and literary values.
+- [Review Library](/reviews): Searchable archive of book reviews by genre.
+- [Literary Journal](/blog): Essays on review craft, reading culture, and author spotlights.
+- [Submit Your Book](/submit): Submit a book for professional literary review.
+- [Contact](/contact): Get in touch with Bertha Reagan and the Circle.
