@@ -54,7 +54,7 @@ function BlogPage() {
           <button
             key={c}
             className={`px-4 py-2 text-xs uppercase tracking-[0.2em] border rounded-full transition-colors ${
-              i === 0 ? "bg-primary text-primary-foreground border-primary" : "border-border text-foreground/70 hover:border-gold hover:text-foreground"
+              i === 0 ? "bg-primary text-primary-foreground border-primary" : "border-border text-foreground/90 hover:border-gold hover:text-foreground"
             }`}
           >
             {c}
