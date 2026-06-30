@@ -44,7 +44,7 @@ function AboutPage() {
             <h1 className="font-serif text-5xl md:text-6xl leading-tight text-foreground text-balance">
               A small circle of readers, grown into a literary society.
             </h1>
-            <div className="mt-8 space-y-5 text-foreground/80 leading-relaxed">
+            <div className="mt-8 space-y-5 text-foreground/90 leading-relaxed">
               <p>
                 Readers Review Circle began at Bertha Reagan's kitchen table in 2018 — twelve readers, one shared shelf, and an unhurried promise to take every book seriously.
               </p>

@@ -127,7 +127,7 @@ function HomePage() {
           <div>
             <SectionEyebrow>Meet the Owner</SectionEyebrow>
             <SectionTitle>The Reader Behind the Circle</SectionTitle>
-            <div className="mt-8 space-y-5 text-foreground/80 leading-relaxed">
+            <div className="mt-8 space-y-5 text-foreground/90 leading-relaxed">
               <p>
                 Bertha Reagan founded Readers Review Circle around a simple conviction: every book deserves a reader who pays attention, and every author deserves a review written with care.
               </p>
@@ -216,7 +216,7 @@ export function ReviewCard({ r }: { r: typeof REVIEWS[number] }) {
         </div>
         <p className="mt-5 text-sm text-muted-foreground leading-relaxed line-clamp-3">{r.summary}</p>
         <div className="mt-6 pt-5 border-t border-border flex items-center justify-between text-xs">
-          <span className="text-foreground/80">Reviewed by {r.reviewer}</span>
+          <span className="text-foreground/90">Reviewed by {r.reviewer}</span>
           <span className="text-muted-foreground">{r.date}</span>
         </div>
       </div>

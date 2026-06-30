@@ -64,7 +64,7 @@ function ReviewsPage() {
             className={`px-4 py-2 text-xs uppercase tracking-[0.2em] border rounded-full transition-colors ${
               genre === g
                 ? "bg-primary text-primary-foreground border-primary"
-                : "bg-transparent border-border text-foreground/70 hover:border-gold hover:text-foreground"
+                : "bg-transparent border-border text-foreground/90 hover:border-gold hover:text-foreground"
             }`}
           >
             {g}
