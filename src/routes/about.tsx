@@ -86,7 +86,7 @@ function AboutPage() {
         <div className="grid md:grid-cols-2 gap-px bg-border">
           {values.map((v, i) => (
             <div key={v.t} className="bg-background p-10">
-              <div className="text-gold font-serif text-2xl mb-4">0{i + 1}</div>
+              <div className="text-ink font-serif text-2xl mb-4">0{i + 1}</div>
               <h3 className="font-serif text-2xl text-foreground mb-3">{v.t}</h3>
               <p className="text-muted-foreground leading-relaxed">{v.d}</p>
             </div>
