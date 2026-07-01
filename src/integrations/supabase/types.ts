@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      book_submissions: {
+        Row: {
+          author_email: string
+          book_title: string
+          created_at: string
+          description: string
+          draft_number: string
+          file_name: string
+          file_path: string
+          first_name: string
+          genre: string
+          id: string
+          last_name: string
+          word_count: number
+        }
+        Insert: {
+          author_email: string
+          book_title: string
+          created_at?: string
+          description: string
+          draft_number: string
+          file_name: string
+          file_path: string
+          first_name: string
+          genre: string
+          id?: string
+          last_name: string
+          word_count: number
+        }
+        Update: {
+          author_email?: string
+          book_title?: string
+          created_at?: string
+          description?: string
+          draft_number?: string
+          file_name?: string
+          file_path?: string
+          first_name?: string
+          genre?: string
+          id?: string
+          last_name?: string
+          word_count?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
