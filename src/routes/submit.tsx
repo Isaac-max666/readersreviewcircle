@@ -244,13 +244,27 @@ function SubmitPage() {
         <div className="bg-card border border-border rounded-sm p-8 md:p-10">
           {submitted ? (
             <div className="text-center py-12">
-              <CheckCircle2 className="w-12 h-12 text-gold mx-auto mb-6" />
-              <h2 className="font-serif text-3xl text-foreground mb-3">Submission received</h2>
+              <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-6">
+                <CheckCircle2 className="w-8 h-8 text-gold" />
+              </div>
+              <h2 className="font-serif text-3xl text-foreground mb-3">Submission confirmed</h2>
               <p className="text-muted-foreground max-w-md mx-auto">
-                Thank you. WhatsApp should have opened with your submission details — please
-                press send to deliver it. Bertha will personally review your book and reach out
-                at the email address you provided.
+                Your file was uploaded successfully and your review request has been received.
+                Bertha will personally review your book and reach out at the email address you provided.
               </p>
+              <div className="mt-6 p-4 bg-background border border-border rounded-sm text-left max-w-md mx-auto">
+                <div className="text-xs uppercase tracking-[0.2em] text-ink mb-2">What happens next</div>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-gold mt-0.5 shrink-0" />
+                    <span>WhatsApp should have opened with your submission details — please press send to deliver it.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-gold mt-0.5 shrink-0" />
+                    <span>We will confirm your spot and matching reviewer within 2–3 business days.</span>
+                  </li>
+                </ul>
+              </div>
               <Button
                 type="button"
                 variant="outline"
