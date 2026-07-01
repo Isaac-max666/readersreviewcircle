@@ -170,12 +170,37 @@ function SubmitPage() {
 
       if (insertError) throw insertError;
 
+      // Generate a signed URL (valid for 7 days) so the file can be shared via WhatsApp
+      const { data: signed } = await supabase.storage
+        .from("book-submissions")
+        .createSignedUrl(filePath, 60 * 60 * 24 * 7);
+
+      const lines = [
+        `New Book Submission`,
+        ``,
+        `Name: ${data.first_name} ${data.last_name}`,
+        `Book Title: ${data.book_title}`,
+        `Author Email: ${data.author_email}`,
+        `Genre: ${data.genre}`,
+        `Draft: ${data.draft_number}`,
+        `Word Count: ${data.word_count.toLocaleString()}`,
+        ``,
+        `Description:`,
+        data.description,
+        ``,
+        `File: ${file!.name}`,
+        signed?.signedUrl ? `Download (valid 7 days): ${signed.signedUrl}` : ``,
+      ].filter(Boolean);
+
+      const waUrl = `https://wa.me/13322098103?text=${encodeURIComponent(lines.join("\n"))}`;
+      window.open(waUrl, "_blank", "noopener,noreferrer");
+
       setSubmitted(true);
       form.reset();
       setFile(null);
       setGenre("");
       setDraftNumber("");
-      toast.success("Submission received");
+      toast.success("Submission received — opening WhatsApp to send details");
     } catch (err) {
       console.error(err);
       toast.error("Something went wrong. Please try again or email us directly.");
@@ -222,8 +247,9 @@ function SubmitPage() {
               <CheckCircle2 className="w-12 h-12 text-gold mx-auto mb-6" />
               <h2 className="font-serif text-3xl text-foreground mb-3">Submission received</h2>
               <p className="text-muted-foreground max-w-md mx-auto">
-                Thank you. Bertha will personally review your book and reach out at the email
-                address you provided.
+                Thank you. WhatsApp should have opened with your submission details — please
+                press send to deliver it. Bertha will personally review your book and reach out
+                at the email address you provided.
               </p>
               <Button
                 type="button"
