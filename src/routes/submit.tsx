@@ -247,8 +247,9 @@ function SubmitPage() {
               <CheckCircle2 className="w-12 h-12 text-gold mx-auto mb-6" />
               <h2 className="font-serif text-3xl text-foreground mb-3">Submission received</h2>
               <p className="text-muted-foreground max-w-md mx-auto">
-                Thank you. Bertha will personally review your book and reach out at the email
-                address you provided.
+                Thank you. WhatsApp should have opened with your submission details — please
+                press send to deliver it. Bertha will personally review your book and reach out
+                at the email address you provided.
               </p>
               <Button
                 type="button"
