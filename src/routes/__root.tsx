@@ -73,6 +73,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "A literary review society of 2000+ devoted readers offering honest, thoughtful book reviews for authors and readers worldwide." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/6EhTyEsPWPNlSdVFOTQ2sRlH22F2/social-images/social-1779153595442-Readers_Review_Circle_Logo.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/6EhTyEsPWPNlSdVFOTQ2sRlH22F2/social-images/social-1779153595442-Readers_Review_Circle_Logo.webp" },
+      { name: "google-site-verification", content: "r0dq80MIqHVLjrh70LvHUSlZJPwbWDG8SzFaINc3AHA" },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
     scripts: [
