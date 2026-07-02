@@ -86,6 +86,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           founder: { "@type": "Person", name: "Bertha Reagan" },
           email: "berthareagan93@yahoo.com",
           description: "Literary review society of 2000+ readers offering professional book reviews.",
+          url: "https://reader-review-circle.lovable.app/",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Readers Review Circle",
+          url: "https://reader-review-circle.lovable.app/",
+          potentialAction: {
+            "@type": "SearchAction",
+            target: "https://reader-review-circle.lovable.app/search?q={search_term_string}",
+            "query-input": "required name=search_term_string",
+          },
         }),
       },
     ],
