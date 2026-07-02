@@ -51,6 +51,7 @@ function ReviewsPage() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search title, author, or theme..."
+            aria-label="Search reviews"
             className="pl-10 h-12 bg-card border-border"
           />
         </div>

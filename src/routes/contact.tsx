@@ -103,21 +103,21 @@ function ContactPage() {
           <form onSubmit={onSubmit} className="bg-card border border-border p-8 md:p-10 rounded-sm space-y-5">
             <div className="grid md:grid-cols-2 gap-5">
               <div className="space-y-2">
-                <Label className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Your Name *</Label>
-                <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
+                <Label htmlFor="contact-name" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Your Name *</Label>
+                <Input id="contact-name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
               </div>
               <div className="space-y-2">
-                <Label className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Email *</Label>
-                <Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
+                <Label htmlFor="contact-email" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Email *</Label>
+                <Input id="contact-email" type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
               </div>
             </div>
             <div className="space-y-2">
-              <Label className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Subject</Label>
-              <Input value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} />
+              <Label htmlFor="contact-subject" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Subject</Label>
+              <Input id="contact-subject" value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} />
             </div>
             <div className="space-y-2">
-              <Label className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Message *</Label>
-              <Textarea rows={7} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required />
+              <Label htmlFor="contact-message" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Message *</Label>
+              <Textarea id="contact-message" rows={7} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required />
             </div>
             <Button type="submit" variant="gold" size="xl" className="w-full">
               Send Message <Send className="w-4 h-4" />
