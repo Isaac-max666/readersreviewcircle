@@ -11,20 +11,6 @@ import { toast } from "sonner";
 
 const EMAIL = "berthareagan93@yahoo.com";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact Bertha Reagan — Readers Review Circle" },
-      { name: "description", content: "Get in touch with Bertha Reagan and the Readers Review Circle team. Authors, publishers, and readers welcome." },
-      { property: "og:title", content: "Contact — Readers Review Circle" },
-      { property: "og:description", content: "Reach our founder Bertha Reagan directly for reviews, collaborations, and questions." },
-      { property: "og:url", content: "/contact" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
-  }),
-  component: ContactPage,
-});
-
 const FAQ = [
   { q: "How do I submit my book for review?", a: "Visit the Submit page and complete the submission form. All submissions go directly to Bertha Reagan at berthareagan93@yahoo.com for personal review." },
   { q: "Is there a fee for reviews?", a: "Readers Review Circle does not charge for reviews. We select books based on literary merit and reviewer interest within the Circle." },
@@ -33,6 +19,34 @@ const FAQ = [
   { q: "Where are reviews published?", a: "Primarily on Goodreads, where our community of 2,000+ readers is most active. Selected reviews are also featured in our Literary Journal here." },
   { q: "Can I request a specific reviewer?", a: "You may mention preferences in your submission, though final pairing rests with our editor based on reader fit." },
 ];
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.a,
+    },
+  })),
+};
+
+export const Route = createFileRoute("/contact")({
+  head: () => ({
+    meta: [
+      { title: "Contact Bertha Reagan — Readers Review Circle" },
+      { name: "description", content: "Get in touch with Bertha Reagan and the Readers Review Circle team. Authors, publishers, and readers welcome." },
+      { property: "og:title", content: "Contact — Readers Review Circle" },
+      { property: "og:description", content: "Reach our founder Bertha Reagan directly for reviews, collaborations, and questions." },
+      { property: "og:url", content: "https://reader-review-circle.lovable.app/contact" },
+    ],
+    links: [{ rel: "canonical", href: "https://reader-review-circle.lovable.app/contact" }],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(FAQ_SCHEMA) }],
+  }),
+  component: ContactPage,
+});
 
 function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
