@@ -1,0 +1,13 @@
+[build]
+  command = "bun run build"
+  publish = "dist/client"
+
+[build.environment]
+  NETLIFY = "true"
+
+# TanStack Start's netlify preset emits an edge function at
+# .netlify/edge-functions/server that handles all non-static requests.
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
