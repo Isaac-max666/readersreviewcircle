@@ -409,21 +409,62 @@ function SubmitPage() {
                 />
               </Field>
 
-              <Button
-                type="submit"
-                disabled={submitting}
-                className="w-full sm:w-auto"
-                size="lg"
-              >
-                {submitting ? (
-                  <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Submitting...
-                  </>
-                ) : (
-                  "Submit for Review"
-                )}
-              </Button>
+              <div className="pt-2">
+                <p className="text-xs uppercase tracking-[0.2em] text-ink mb-3">
+                  Choose how to send your submission
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button
+                    type="button"
+                    disabled={submitting !== null}
+                    onClick={(e) =>
+                      handleSubmit(
+                        e.currentTarget.form!.dispatchEvent as unknown as never,
+                        "email",
+                      ) as unknown as void
+                    }
+                    className="flex-1"
+                    size="lg"
+                  >
+                    {submitting === "email" ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Preparing email...
+                      </>
+                    ) : (
+                      <>
+                        <Mail className="w-4 h-4 mr-2" />
+                        Submit via Email
+                      </>
+                    )}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    disabled={submitting !== null}
+                    onClick={(e) =>
+                      handleSubmit(
+                        e.currentTarget.form!.dispatchEvent as unknown as never,
+                        "whatsapp",
+                      ) as unknown as void
+                    }
+                    className="flex-1"
+                    size="lg"
+                  >
+                    {submitting === "whatsapp" ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Opening WhatsApp...
+                      </>
+                    ) : (
+                      "Submit via WhatsApp"
+                    )}
+                  </Button>
+                </div>
+                <p className="text-xs text-muted-foreground mt-3">
+                  Your file uploads either way — we just need to know where to send the details.
+                </p>
+              </div>
             </form>
           )}
         </div>
