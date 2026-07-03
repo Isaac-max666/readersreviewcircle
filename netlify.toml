@@ -5,9 +5,6 @@
 [build.environment]
   NETLIFY = "true"
 
-# TanStack Start's netlify preset emits an edge function at
-# .netlify/edge-functions/server that handles all non-static requests.
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/server"
-  status = 200
+# TanStack Start's Netlify preset writes its own function config and
+# `_redirects` into the publish directory during build. No manual redirect
+# rules are needed here.
