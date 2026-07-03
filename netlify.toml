@@ -1,0 +1,10 @@
+[build]
+  command = "bun run build"
+  publish = "dist/client"
+
+[build.environment]
+  NETLIFY = "true"
+
+# TanStack Start's Netlify preset writes its own function config and
+# `_redirects` into the publish directory during build. No manual redirect
+# rules are needed here.
