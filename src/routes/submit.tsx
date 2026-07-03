@@ -413,12 +413,7 @@ function SubmitPage() {
                   <Button
                     type="button"
                     disabled={submitting !== null}
-                    onClick={(e) =>
-                      handleSubmit(
-                        e.currentTarget.form!.dispatchEvent as unknown as never,
-                        "email",
-                      ) as unknown as void
-                    }
+                    onClick={(e) => handleSubmit(e.currentTarget.form!, "email")}
                     className="flex-1"
                     size="lg"
                   >
