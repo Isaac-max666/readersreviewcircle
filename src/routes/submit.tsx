@@ -88,10 +88,17 @@ export const Route = createFileRoute("/submit")({
 });
 
 function SubmitPage() {
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState<null | "email" | "whatsapp">(null);
+  const [submittedVia, setSubmittedVia] = useState<null | "email" | "whatsapp">(null);
   const [file, setFile] = useState<File | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [genre, setGenre] = useState("");
+  const [draftNumber, setDraftNumber] = useState("");
+
+  async function handleSubmit(
+    e: React.FormEvent<HTMLFormElement>,
+    method: "email" | "whatsapp",
+  ) {
   const [genre, setGenre] = useState("");
   const [draftNumber, setDraftNumber] = useState("");
 
