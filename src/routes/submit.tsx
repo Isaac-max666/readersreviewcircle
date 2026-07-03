@@ -99,10 +99,8 @@ function SubmitPage() {
     e: React.FormEvent<HTMLFormElement>,
     method: "email" | "whatsapp",
   ) {
-  const [genre, setGenre] = useState("");
-  const [draftNumber, setDraftNumber] = useState("");
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
