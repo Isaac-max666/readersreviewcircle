@@ -17,7 +17,7 @@ import {
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
-const RECIPIENT = "berthareagan93@yahoo.com";
+const RECIPIENT = "readersreviewcircle@gmail.com";
 
 const GENRES = [
   "Fiction",
@@ -88,16 +88,17 @@ export const Route = createFileRoute("/submit")({
 });
 
 function SubmitPage() {
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState<null | "email" | "whatsapp">(null);
+  const [submittedVia, setSubmittedVia] = useState<null | "email" | "whatsapp">(null);
   const [file, setFile] = useState<File | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [genre, setGenre] = useState("");
   const [draftNumber, setDraftNumber] = useState("");
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
+  async function handleSubmit(
+    form: HTMLFormElement,
+    method: "email" | "whatsapp",
+  ) {
     const fd = new FormData(form);
 
     const payload = {
@@ -139,7 +140,7 @@ function SubmitPage() {
     }
 
     setErrors({});
-    setSubmitting(true);
+    setSubmitting(method);
 
     try {
       const data = parsed.data!;
@@ -170,11 +171,11 @@ function SubmitPage() {
 
       if (insertError) throw insertError;
 
-      // Generate a signed URL (valid for 7 days) so the file can be shared via WhatsApp
       const { data: signed } = await supabase.storage
         .from("book-submissions")
         .createSignedUrl(filePath, 60 * 60 * 24 * 7);
 
+      const subject = `New Book Submission — ${data.book_title}`;
       const lines = [
         `New Book Submission`,
         ``,
@@ -191,21 +192,28 @@ function SubmitPage() {
         `File: ${file!.name}`,
         signed?.signedUrl ? `Download (valid 7 days): ${signed.signedUrl}` : ``,
       ].filter(Boolean);
+      const body = lines.join("\n");
 
-      const waUrl = `https://wa.me/13322098103?text=${encodeURIComponent(lines.join("\n"))}`;
-      window.open(waUrl, "_blank", "noopener,noreferrer");
+      if (method === "whatsapp") {
+        const waUrl = `https://wa.me/13322098103?text=${encodeURIComponent(body)}`;
+        window.open(waUrl, "_blank", "noopener,noreferrer");
+        toast.success("Submission received — opening WhatsApp to send details");
+      } else {
+        const mailUrl = `mailto:${RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailUrl;
+        toast.success("Submission received — opening your email app");
+      }
 
-      setSubmitted(true);
+      setSubmittedVia(method);
       form.reset();
       setFile(null);
       setGenre("");
       setDraftNumber("");
-      toast.success("Submission received — opening WhatsApp to send details");
     } catch (err) {
       console.error(err);
       toast.error("Something went wrong. Please try again or email us directly.");
     } finally {
-      setSubmitting(false);
+      setSubmitting(null);
     }
   }
 
@@ -242,7 +250,7 @@ function SubmitPage() {
         </aside>
 
         <div className="bg-card border border-border rounded-sm p-8 md:p-10">
-          {submitted ? (
+          {submittedVia ? (
             <div className="text-center py-12">
               <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-6">
                 <CheckCircle2 className="w-8 h-8 text-gold" />
@@ -257,7 +265,11 @@ function SubmitPage() {
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                    <span>WhatsApp should have opened with your submission details — please press send to deliver it.</span>
+                    <span>
+                      {submittedVia === "whatsapp"
+                        ? "WhatsApp should have opened with your submission details — please press send to deliver it."
+                        : `Your email app should have opened with the submission addressed to ${RECIPIENT} — please press send to deliver it.`}
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-gold mt-0.5 shrink-0" />
@@ -269,13 +281,17 @@ function SubmitPage() {
                 type="button"
                 variant="outline"
                 className="mt-8"
-                onClick={() => setSubmitted(false)}
+                onClick={() => setSubmittedVia(null)}
               >
                 Submit another book
               </Button>
             </div>
           ) : (
-            <form onSubmit={onSubmit} noValidate className="space-y-6">
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              noValidate
+              className="space-y-6"
+            >
               <div className="grid sm:grid-cols-2 gap-5">
                 <Field label="First Name" htmlFor="first_name" error={errors.first_name}>
                   <Input id="first_name" name="first_name" required maxLength={80} />
@@ -389,21 +405,52 @@ function SubmitPage() {
                 />
               </Field>
 
-              <Button
-                type="submit"
-                disabled={submitting}
-                className="w-full sm:w-auto"
-                size="lg"
-              >
-                {submitting ? (
-                  <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Submitting...
-                  </>
-                ) : (
-                  "Submit for Review"
-                )}
-              </Button>
+              <div className="pt-2">
+                <p className="text-xs uppercase tracking-[0.2em] text-ink mb-3">
+                  Choose how to send your submission
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button
+                    type="button"
+                    disabled={submitting !== null}
+                    onClick={(e) => handleSubmit(e.currentTarget.form!, "email")}
+                    className="flex-1"
+                    size="lg"
+                  >
+                    {submitting === "email" ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Preparing email...
+                      </>
+                    ) : (
+                      <>
+                        <Mail className="w-4 h-4 mr-2" />
+                        Submit via Email
+                      </>
+                    )}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    disabled={submitting !== null}
+                    onClick={(e) => handleSubmit(e.currentTarget.form!, "whatsapp")}
+                    className="flex-1"
+                    size="lg"
+                  >
+                    {submitting === "whatsapp" ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Opening WhatsApp...
+                      </>
+                    ) : (
+                      "Submit via WhatsApp"
+                    )}
+                  </Button>
+                </div>
+                <p className="text-xs text-muted-foreground mt-3">
+                  Your file uploads either way — we just need to know where to send the details.
+                </p>
+              </div>
             </form>
           )}
         </div>
