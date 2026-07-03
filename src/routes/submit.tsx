@@ -254,7 +254,7 @@ function SubmitPage() {
         </aside>
 
         <div className="bg-card border border-border rounded-sm p-8 md:p-10">
-          {submitted ? (
+          {submittedVia ? (
             <div className="text-center py-12">
               <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-6">
                 <CheckCircle2 className="w-8 h-8 text-gold" />
@@ -269,7 +269,11 @@ function SubmitPage() {
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                    <span>WhatsApp should have opened with your submission details — please press send to deliver it.</span>
+                    <span>
+                      {submittedVia === "whatsapp"
+                        ? "WhatsApp should have opened with your submission details — please press send to deliver it."
+                        : `Your email app should have opened with the submission addressed to ${RECIPIENT} — please press send to deliver it.`}
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-gold mt-0.5 shrink-0" />
@@ -281,13 +285,17 @@ function SubmitPage() {
                 type="button"
                 variant="outline"
                 className="mt-8"
-                onClick={() => setSubmitted(false)}
+                onClick={() => setSubmittedVia(null)}
               >
                 Submit another book
               </Button>
             </div>
           ) : (
-            <form onSubmit={onSubmit} noValidate className="space-y-6">
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              noValidate
+              className="space-y-6"
+            >
               <div className="grid sm:grid-cols-2 gap-5">
                 <Field label="First Name" htmlFor="first_name" error={errors.first_name}>
                   <Input id="first_name" name="first_name" required maxLength={80} />
