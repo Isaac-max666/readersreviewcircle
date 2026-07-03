@@ -17,7 +17,7 @@ import {
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
-const RECIPIENT = "berthareagan93@yahoo.com";
+const RECIPIENT = "readersreviewcircle@gmail.com";
 
 const GENRES = [
   "Fiction",
