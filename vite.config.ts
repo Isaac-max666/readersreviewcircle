@@ -7,9 +7,12 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 const isVercel = process.env.VERCEL === "1";
+const isNetlify = process.env.NETLIFY === "true" || process.env.NETLIFY === "1";
 
 export default defineConfig({
   tanstackStart: isVercel
     ? { server: { preset: "vercel" } }
+    : isNetlify
+    ? { server: { preset: "netlify" } }
     : { server: { entry: "server" } },
 });
