@@ -433,12 +433,7 @@ function SubmitPage() {
                     type="button"
                     variant="outline"
                     disabled={submitting !== null}
-                    onClick={(e) =>
-                      handleSubmit(
-                        e.currentTarget.form!.dispatchEvent as unknown as never,
-                        "whatsapp",
-                      ) as unknown as void
-                    }
+                    onClick={(e) => handleSubmit(e.currentTarget.form!, "whatsapp")}
                     className="flex-1"
                     size="lg"
                   >
