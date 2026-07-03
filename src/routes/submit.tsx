@@ -144,7 +144,7 @@ function SubmitPage() {
     }
 
     setErrors({});
-    setSubmitting(true);
+    setSubmitting(method);
 
     try {
       const data = parsed.data!;
@@ -175,11 +175,11 @@ function SubmitPage() {
 
       if (insertError) throw insertError;
 
-      // Generate a signed URL (valid for 7 days) so the file can be shared via WhatsApp
       const { data: signed } = await supabase.storage
         .from("book-submissions")
         .createSignedUrl(filePath, 60 * 60 * 24 * 7);
 
+      const subject = `New Book Submission — ${data.book_title}`;
       const lines = [
         `New Book Submission`,
         ``,
@@ -196,21 +196,28 @@ function SubmitPage() {
         `File: ${file!.name}`,
         signed?.signedUrl ? `Download (valid 7 days): ${signed.signedUrl}` : ``,
       ].filter(Boolean);
+      const body = lines.join("\n");
 
-      const waUrl = `https://wa.me/13322098103?text=${encodeURIComponent(lines.join("\n"))}`;
-      window.open(waUrl, "_blank", "noopener,noreferrer");
+      if (method === "whatsapp") {
+        const waUrl = `https://wa.me/13322098103?text=${encodeURIComponent(body)}`;
+        window.open(waUrl, "_blank", "noopener,noreferrer");
+        toast.success("Submission received — opening WhatsApp to send details");
+      } else {
+        const mailUrl = `mailto:${RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailUrl;
+        toast.success("Submission received — opening your email app");
+      }
 
-      setSubmitted(true);
+      setSubmittedVia(method);
       form.reset();
       setFile(null);
       setGenre("");
       setDraftNumber("");
-      toast.success("Submission received — opening WhatsApp to send details");
     } catch (err) {
       console.error(err);
       toast.error("Something went wrong. Please try again or email us directly.");
     } finally {
-      setSubmitting(false);
+      setSubmitting(null);
     }
   }
 
