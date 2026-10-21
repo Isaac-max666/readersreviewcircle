@@ -213,9 +213,20 @@ export function ReviewCard({ r }: { r: typeof REVIEWS[number] }) {
         <h3 className="font-serif text-2xl text-foreground leading-tight">{r.title}</h3>
         <p className="mt-1 text-sm italic text-muted-foreground">by {r.author}</p>
         <div className="flex items-center gap-0.5 mt-4">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} className={`w-3.5 h-3.5 ${i < r.rating ? "fill-gold text-gold" : "text-border"}`} />
-          ))}
+          {Array.from({ length: 5 }).map((_, i) => {
+            const fill = r.rating - i;
+            return (
+              <span key={i} className="relative w-3.5 h-3.5 inline-block">
+                <Star className="absolute inset-0 w-3.5 h-3.5 text-border" />
+                {fill >= 1 && <Star className="absolute inset-0 w-3.5 h-3.5 fill-gold text-gold" />}
+                {fill > 0 && fill < 1 && (
+                  <span className="absolute inset-0 w-3.5 h-3.5 overflow-hidden">
+                    <Star className="w-3.5 h-3.5 fill-gold text-gold" style={{ clipPath: "inset(0 50% 0 0)" }} />
+                  </span>
+                )}
+              </span>
+            );
+          })}
         </div>
         <p className="mt-5 text-sm text-muted-foreground leading-relaxed line-clamp-3">{r.summary}</p>
         <div className="mt-6 pt-5 border-t border-border flex items-center justify-between text-xs">
