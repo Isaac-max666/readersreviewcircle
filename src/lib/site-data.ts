@@ -33,7 +33,7 @@ export const REVIEWS: Review[] = [
     title: "Inside the Mind of a Psychiatrist",
     author: "Art Smukler",
     genre: "PSYCHOLOGY, MEMOIR",
-    rating: 5,
+    rating: 4,
     cover: covers[0],
     summary: "Before introducing his patients, Art Smukler introduces himself as someone who needed help. That decision gives this career memoir a personal foundation. Through his own analysis, family life and psychiatric practice, he examines the difficulty of listening without allowing personal assumptions to take over. The accounts of Jerome, Bobby and Polly are particularly revealing because progress does not always mean what the doctor initially expects. Some explanations and broader claims need greater qualification, but the candid moments of learning give the book its strongest appeal.",
     reviewer: "Margaret Chen",
