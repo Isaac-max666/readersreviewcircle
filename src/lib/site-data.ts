@@ -30,12 +30,12 @@ export const GENRES = [
 export const REVIEWS: Review[] = [
   {
     id: "1",
-    title: "The Cartographer's Daughter",
-    author: "Elena Marchetti",
-    genre: "Fiction",
+    title: "Inside the Mind of a Psychiatrist",
+    author: "Art Smukler",
+    genre: "PSYCHOLOGY, MEMOIR",
     rating: 5,
     cover: covers[0],
-    summary: "A luminous, century-spanning meditation on inheritance, longing, and the maps we draw of one another. Marchetti's prose is a quiet symphony.",
+    summary: "Before introducing his patients, Art Smukler introduces himself as someone who needed help. That decision gives this career memoir a personal foundation. Through his own analysis, family life and psychiatric practice, he examines the difficulty of listening without allowing personal assumptions to take over. The accounts of Jerome, Bobby and Polly are particularly revealing because progress does not always mean what the doctor initially expects. Some explanations and broader claims need greater qualification, but the candid moments of learning give the book its strongest appeal.",
     reviewer: "Margaret Chen",
     date: "March 2026",
   },
