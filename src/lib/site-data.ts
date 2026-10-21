@@ -1,5 +1,6 @@
 // Shared mock data for reviews
 import smuklerCover from "@/assets/inside-the-mind-of-a-psychiatrist.jpg.asset.json";
+import circleOfWindCover from "@/assets/circle-of-wind-stuart-lean.jpg.asset.json";
 export type Review = {
   id: string;
   title: string;
@@ -46,7 +47,7 @@ export const REVIEWS: Review[] = [
     author: "Stuart Lean",
     genre: "FANTASY",
     rating: 3.5,
-    cover: covers[1],
+    cover: circleOfWindCover.url,
     summary: "Two young lives take shape in a world of dangerous institutions, family traditions and demanding magic. Kethlys and Bella approach strength from different directions: one must discover her agency, while the other must learn what her choices cost others. Birth-swords, healing lessons and complicated loyalties give this opening installment its character. Detailed world-building sometimes slows the action, but the relationships and moral consequences provide reasons to continue. A dark beginning for readers who enjoy substantial magical systems and developing character journeys.",
     reviewer: "Readers Review Circle",
     date: "October 2026",
