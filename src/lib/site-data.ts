@@ -1,4 +1,5 @@
 // Shared mock data for reviews
+import smuklerCover from "@/assets/inside-the-mind-of-a-psychiatrist.jpg.asset.json";
 export type Review = {
   id: string;
   title: string;
